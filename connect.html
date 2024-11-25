@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H24</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>TRUE-Dose</h1>
+        <h6><i>Quality, One Dose at a Time</i></h6>
+        <img src="H24Logo.png" alt="Logo" width="100" height="100">
+        <nav>
+            <ul>
+                <li><a href="index.html"><u>HOME</u></a></li>
+                <li><a href="connect.html"><u>CONNECT</u></a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>CONNECT</h2>
+            <button id="connectButton" type="button">CONNECT</button>  
+        </section>
+
+        <section>
+            <h2>Upload QR Code</h2>
+
+            <input type="file" id="qrCodeInput" accept="image/*">
+            <br>
+            <meter id="progressMeter" min="0" max="100" value="0"></meter>
+            <button id="uploadButton" type="button">Upload QR Code</button>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+            <div id="resultsTable"></div> 
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Medicine Quality Monitoring System</p>
+    </footer>
+    
+    <script src="scripts.js"></script> 
+</body>
+</html>
