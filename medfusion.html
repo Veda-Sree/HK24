@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDFUSION</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MEDFUSION</h1>
+        </header>
+
+        <form id="medfusionForm">
+            <div class="input-group">
+                <label for="tablet1">Tablet 1:</label>
+                <input type="text" id="tablet1" placeholder="Enter Tablet name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="tablet2">Tablet 2:</label>
+                <input type="text" id="tablet2" placeholder="Enter Tablet name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="tablet3">Tablet 3:</label>
+                <input type="text" id="tablet3" placeholder="Enter Tablet name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="condition">Condition:</label>
+                <input type="text" id="condition" placeholder="Enter Condition" required>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('medfusionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get input values
+            const tablet1 = document.getElementById('tablet1').value;
+            const tablet2 = document.getElementById('tablet2').value;
+            const tablet3 = document.getElementById('tablet3').value;
+            const condition = document.getElementById('condition').value;
+
+            // Concatenate all inputs into a string
+            const concatenatedData = `Tablet 1: ${tablet1}, Tablet 2: ${tablet2}, Tablet 3: ${tablet3}, Condition: ${condition}`;
+
+            // Display the concatenated data in the output div
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `<p>Data sent: ${concatenatedData}</p>`;
+
+            // Prepare data for the HTTP request
+            const requestData = {
+                tablet1: tablet1,
+                tablet2: tablet2,
+                tablet3: tablet3,
+                condition: condition
+            };
+
+            // Send HTTP request
+            fetch('https://pillpall-backend.onrender.com/chat', {  // Replace with your actual API endpoint
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle the response from the server
+                outputDiv.innerHTML += `<p>Response from server: ${JSON.stringify(data)}</p>`;
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the fetch
+                console.error('There was a problem with the fetch operation:', error);
+                outputDiv.innerHTML += `<p>Error: ${error.message}</p>`;
+            });
+        });
+    </script>
+</body>
+</html>
