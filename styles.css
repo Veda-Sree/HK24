@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url('H24BG.jpg.avif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header {
+    background-color: #003F91;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    display: inline;
+    text-align: justify;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem; 
+}
+
+nav ul li a:hover {
+    background-color: #e5f4e3; 
+    color: #003F91; 
+    padding: 0.5rem; 
+    border-radius: 10px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+    font-family: Helvetica, sans-serif;
+
+}
+
+h1, h2 {
+    font-family: Helvetica, sans-serif;
+    margin-top: 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+section {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    flex-direction: column;  
+    margin-bottom: 20px;     
+}
+
+button {
+    background-color: #C1292E;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px 0; 
+}
+
+button:hover {
+    background-color: #A22728; 
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+    margin: 0;
+}
+
+h6{
+    margin: 0;
+}
