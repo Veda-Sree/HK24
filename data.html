@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Medicine Details Form</h1>
+        </header>
+
+        <form id="medicineForm">
+            <div class="input-group">
+                <label for="batchNumber">Batch Number:</label>
+                <input type="text" id="batchNumber" placeholder="Enter Batch Number" required>
+            </div>
+
+            <div class="input-group">
+                <label for="medicineName">Medicine Name:</label>
+                <input type="text" id="medicineName" placeholder="Enter Medicine Name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="composition">Composition:</label>
+                <input type="text" id="composition" placeholder="Enter Composition" required>
+            </div>
+
+            <div class="input-group">
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="date" id="expiryDate" required>
+            </div>
+
+            <div class="input-group">
+                <label for="transitionTemp">Transition Temperature:</label>
+                <input type="number" id="transitionTemp" placeholder="Enter Temperature (°C)" required>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('medicineForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get input values
+            const batchNumber = document.getElementById('batchNumber').value;
+            const medicineName = document.getElementById('medicineName').value;
+            const composition = document.getElementById('composition').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const transitionTemp = document.getElementById('transitionTemp').value;
+
+            // Prepare data for the HTTP request
+            const requestData = {
+                batchNumber: batchNumber,
+                medicineName: medicineName,
+                composition: composition,
+                expiryDate: expiryDate,
+                transitionTemp: transitionTemp
+            };
+
+            // Send HTTP request
+            fetch('https://your-api-endpoint.com/submit', {  // Replace with your actual API endpoint
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Request succeeded with JSON response:', data);
+                // Optionally handle the success here (e.g., redirect or show a success message)
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // Optionally handle the error here (e.g., show an error message)
+            });
+        });
+    </script>
+</body>
+</html>
