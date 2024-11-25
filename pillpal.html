@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pill-PaL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PiLL-PaL</h1>
+        </header>
+
+        <form id="pillpalForm">
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter Full Name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" placeholder="Enter Age" required>
+            </div>
+
+            <div class="input-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('pillpalForm').addEventListener('submit', function(event) {
+            event.preventDefault();  
+            window.location.href = 'medfusion.html';
+        });
+    </script>
+</body>
+</html>
